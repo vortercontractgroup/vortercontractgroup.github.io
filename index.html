@@ -1,657 +1,156 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vorter Contract Group | Government Contract Support</title>
-  <meta name="description" content="Vorter Contract Group provides vendor sourcing, proposal support, project coordination, and contract administration services for government and commercial opportunities." />
-  <style>
-    :root{
-      --navy:#0f2742;
-      --blue:#1f5f8b;
-      --light:#f5f7fa;
-      --text:#1c2733;
-      --muted:#607080;
-      --line:#dfe5eb;
-      --white:#ffffff;
-      --gold:#caa75a;
-      --dark:#0a1a2b;
-    }
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0;
-      font-family:Arial, Helvetica, sans-serif;
-      color:var(--text);
-      background:var(--white);
-      line-height:1.6;
-    }
-    a{color:inherit}
-    .container{width:min(1120px,92%);margin:auto}
-    .topbar{
-      background:var(--dark);
-      color:#d9e4ed;
-      font-size:.85rem;
-      padding:7px 0;
-    }
-    .topbar-inner{
-      display:flex;
-      justify-content:space-between;
-      gap:20px;
-      flex-wrap:wrap;
-    }
-    header{
-      background:var(--navy);
-      color:var(--white);
-      padding:18px 0;
-      position:sticky;
-      top:0;
-      z-index:10;
-      box-shadow:0 2px 12px rgba(0,0,0,.12);
-    }
-    .nav{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:20px;
-    }
-    .brand-wrap{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      text-decoration:none;
-    }
-    .brand-mark{
-      width:46px;
-      height:46px;
-      border:2px solid var(--gold);
-      border-radius:8px;
-      display:grid;
-      place-items:center;
-      font-weight:800;
-      letter-spacing:-.08em;
-      color:var(--white);
-    }
-    .brand{
-      font-size:1.15rem;
-      font-weight:700;
-      letter-spacing:.04em;
-    }
-    .brand small{
-      display:block;
-      font-size:.7rem;
-      color:#b8c7d4;
-      letter-spacing:.08em;
-      margin-top:2px;
-    }
-    nav a{
-      text-decoration:none;
-      margin-left:18px;
-      font-size:.92rem;
-      opacity:.95;
-    }
-    nav a:hover{color:var(--gold)}
-    .nav-button{
-      background:var(--gold);
-      color:#111!important;
-      padding:10px 14px;
-      border-radius:6px;
-      font-weight:700;
-    }
-    .hero{
-      background:
-        linear-gradient(135deg,rgba(15,39,66,.98),rgba(31,95,139,.95)),
-        radial-gradient(circle at 80% 20%,rgba(202,167,90,.18),transparent 35%);
-      color:var(--white);
-      padding:92px 0 82px;
-    }
-    .hero-grid{
-      display:grid;
-      grid-template-columns:1.35fr .75fr;
-      gap:42px;
-      align-items:center;
-    }
-    .eyebrow{
-      color:#ecd79e;
-      text-transform:uppercase;
-      letter-spacing:.14em;
-      font-size:.82rem;
-      font-weight:700;
-    }
-    h1{
-      font-size:clamp(2.3rem,5vw,4.2rem);
-      line-height:1.08;
-      margin:10px 0 20px;
-    }
-    .hero p{
-      font-size:1.15rem;
-      max-width:720px;
-      margin:0 0 28px;
-      opacity:.95;
-    }
-    .cta{
-      display:inline-block;
-      background:var(--white);
-      color:var(--navy);
-      padding:13px 20px;
-      border-radius:6px;
-      text-decoration:none;
-      font-weight:700;
-      margin-right:10px;
-    }
-    .cta.secondary{
-      background:transparent;
-      color:var(--white);
-      border:1px solid rgba(255,255,255,.65);
-    }
-    .hero-card{
-      background:rgba(255,255,255,.1);
-      border:1px solid rgba(255,255,255,.25);
-      padding:26px;
-      border-radius:12px;
-      backdrop-filter:blur(5px);
-    }
-    .hero-card h3{margin-top:0}
-    .hero-card p{margin:8px 0;font-size:1rem}
-    .mini-grid{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:12px;
-      margin-top:20px;
-    }
-    .mini-grid div{
-      background:rgba(255,255,255,.08);
-      border-radius:8px;
-      padding:14px;
-    }
-    .mini-grid strong{
-      display:block;
-      color:#ecd79e;
-      font-size:1.05rem;
-    }
-    section{padding:72px 0}
-    section.alt{background:var(--light)}
-    .section-title{
-      text-align:center;
-      margin-bottom:42px;
-    }
-    .section-title h2{
-      font-size:2rem;
-      margin:0 0 10px;
-      color:var(--navy);
-    }
-    .section-title p{
-      margin:0 auto;
-      max-width:760px;
-      color:var(--muted);
-    }
-    .cards{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:22px;
-    }
-    .card{
-      background:var(--white);
-      border:1px solid var(--line);
-      border-radius:10px;
-      padding:26px;
-      box-shadow:0 8px 22px rgba(16,39,66,.05);
-    }
-    .card h3{margin:0 0 10px;color:var(--navy)}
-    .card p{margin:0;color:var(--muted)}
-    .card-number{
-      width:38px;
-      height:38px;
-      border-radius:8px;
-      display:grid;
-      place-items:center;
-      background:#eaf2f8;
-      color:var(--blue);
-      font-weight:800;
-      margin-bottom:14px;
-    }
-    .about{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:38px;
-      align-items:start;
-    }
-    .about h2{color:var(--navy);margin-top:0}
-    .checklist{
-      margin:0;
-      padding-left:20px;
-    }
-    .checklist li{margin-bottom:10px}
-    .cap-grid{
-      display:grid;
-      grid-template-columns:1.15fr .85fr;
-      gap:30px;
-      align-items:start;
-    }
-    .cap-list{
-      columns:2;
-      column-gap:30px;
-      padding-left:20px;
-    }
-    .cap-list li{
-      break-inside:avoid;
-      margin-bottom:11px;
-    }
-    .info-box{
-      background:var(--navy);
-      color:var(--white);
-      padding:28px;
-      border-radius:12px;
-    }
-    .info-box h3{margin-top:0}
-    .info-box p{margin:10px 0}
-    .pricing{
-      display:grid;
-      grid-template-columns:repeat(2,1fr);
-      gap:22px;
-    }
-    .price-card{
-      border:1px solid var(--line);
-      border-radius:10px;
-      padding:28px;
-      background:var(--white);
-    }
-    .price-card h3{margin:0;color:var(--navy)}
-    .price{
-      font-size:1.65rem;
-      font-weight:700;
-      color:var(--blue);
-      margin:8px 0 12px;
-    }
-    .price-card p{margin:0;color:var(--muted)}
-    .notice{
-      margin-top:28px;
-      padding:20px;
-      border-left:4px solid var(--blue);
-      background:#eef5fa;
-      color:#31485e;
-    }
-    .experience-grid{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:22px;
-    }
-    .experience-card{
-      background:var(--white);
-      border:1px solid var(--line);
-      border-radius:10px;
-      padding:24px;
-    }
-    .experience-card h3{color:var(--navy);margin-top:0}
-    .experience-card p{color:var(--muted);margin-bottom:0}
-    .contact-grid{
-      display:grid;
-      grid-template-columns:.85fr 1.15fr;
-      gap:28px;
-      align-items:start;
-    }
-    .contact-box{
-      background:var(--navy);
-      color:var(--white);
-      padding:34px;
-      border-radius:12px;
-    }
-    .contact-box h2{margin-top:0}
-    .contact-row{
-      margin:14px 0;
-      word-break:break-word;
-    }
-    form{
-      display:grid;
-      gap:14px;
-    }
-    input, textarea{
-      width:100%;
-      padding:13px 14px;
-      border:1px solid #cfd8e1;
-      border-radius:7px;
-      font:inherit;
-    }
-    textarea{min-height:145px;resize:vertical}
-    button{
-      border:0;
-      cursor:pointer;
-      background:var(--blue);
-      color:white;
-      padding:13px 18px;
-      border-radius:6px;
-      font-weight:700;
-      font-size:1rem;
-    }
-    .legal-grid{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:22px;
-    }
-    .legal-card{
-      border:1px solid var(--line);
-      border-radius:10px;
-      padding:24px;
-      background:#fff;
-    }
-    .legal-card h3{color:var(--navy);margin-top:0}
-    footer{
-      background:#0b1c2d;
-      color:#d9e2ea;
-      padding:28px 0;
-      text-align:center;
-      font-size:.9rem;
-    }
-    .small{font-size:.88rem;color:var(--muted)}
-    @media (max-width:900px){
-      .hero-grid,.about,.cap-grid,.contact-grid{grid-template-columns:1fr}
-      .cards,.experience-grid{grid-template-columns:1fr 1fr}
-      .cap-list{columns:1}
-      nav{display:none}
-    }
-    @media (max-width:620px){
-      .cards,.pricing,.experience-grid,.legal-grid,.mini-grid{grid-template-columns:1fr}
-      .hero{padding:70px 0 60px}
-    }
-  </style>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>VORTER Contract Group | Government Contract Solutions</title>
+  <meta name="description" content="VORTER Contract Group provides government procurement, vendor sourcing, contract management, and project coordination nationwide."/>
+  <link rel="stylesheet" href="styles.css"/>
 </head>
 <body>
-  <div class="topbar">
-    <div class="container topbar-inner">
-      <span>Federal • State • Local • Commercial Contract Support</span>
-      <span></span>
+<header class="nav">
+  <a class="brand" href="#top" aria-label="VORTER Contract Group">
+    <img src="assets/vorter-logo.png" alt="VORTER Contract Group logo"/>
+  </a>
+  <button class="menu" aria-label="Open menu">MENU</button>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#support">Who We Support</a>
+    <a href="#services">Capabilities</a>
+    <a href="#leadership">Our Team</a>
+    <a class="contact-link" href="#contact">Contact</a>
+  </nav>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="grid-lines"></div>
+    <div class="hero-copy">
+      <div class="eyebrow">FEDERAL <span></span> STATE <span></span> LOCAL</div>
+      <h1>Government contract solutions.<br/><em>Built around performance.</em></h1>
+      <p>VORTER Contract Group provides procurement, vendor sourcing, contract management, and project coordination for government agencies and prime contractors nationwide.</p>
+      <div class="hero-actions">
+        <a class="primary" href="#services">Explore capabilities</a>
+        <a class="secondary" href="#contact">Start a conversation</a>
+      </div>
     </div>
-  </div>
-
-  <header>
-    <div class="container nav">
-      <a class="brand-wrap" href="#home">
-        <div class="brand-mark">VCG</div>
-        <div class="brand">VORTER CONTRACT GROUP</div>
-      </a>
-      <nav>
-        <a href="#services">Services</a>
-        <a href="#capabilities">Capabilities</a>
-        <a href="#pricing">Pricing</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-        <a class="nav-button" href="#contact">Request a Quote</a>
-      </nav>
+    <div class="hero-side">
+      <div class="status-card">
+        <div class="status-label">COMPANY PROFILE</div>
+        <dl>
+          <div><dt>Service Area</dt><dd>Nationwide</dd></div>
+          <div><dt>UEI</dt><dd>XK8KT7LJ8DA6</dd></div>
+          <div><dt>CAGE</dt><dd>Pending</dd></div>
+          <div><dt>Focus</dt><dd>Government Contracting</dd></div>
+        </dl>
+      </div>
+      <div class="hero-statement">The right partner.<br/><strong>The right solution.</strong></div>
     </div>
-  </header>
+  </section>
 
-  <main id="home">
-    <section class="hero">
-      <div class="container hero-grid">
-        <div>
-          <div class="eyebrow">Contract Support Built Around Execution</div>
-          <h1>Reliable support for government and commercial contracting.</h1>
-          <p>
-            Vorter Contract Group helps clients review opportunities, source qualified vendors,
-            coordinate proposals, manage project requirements, and maintain organized contract documentation.
-          </p>
-          <a class="cta" href="#contact">Request a Quote</a>
-          <a class="cta secondary" href="#capabilities">View Capabilities</a>
-        </div>
-        <div class="hero-card">
-          <h3>Core Capabilities</h3>
-          <p>Vendor and subcontractor sourcing</p>
-          <p>Opportunity and scope review</p>
-          <p>Proposal and quote coordination</p>
-          <p>Project and delivery oversight</p>
-          <p>Contract administration support</p>
-          <div class="mini-grid">
-            <div><strong>Nationwide</strong><span>Vendor sourcing</span></div>
-            <div><strong>End-to-End</strong><span>Coordination</span></div>
-            <div><strong>Clear</strong><span>Documentation</span></div>
-            <div><strong>Responsive</strong><span>Communication</span></div>
-          </div>
-        </div>
+  <section class="mission">
+    <div class="section-label">OUR MISSION</div>
+    <p>Deliver dependable government contract solutions through integrity, accountability, responsive communication, and disciplined execution.</p>
+  </section>
+
+  <section id="support" class="support">
+    <div class="section-head">
+      <div>
+        <div class="section-label">WHO WE SUPPORT</div>
+        <h2>Supporting missions across industries.</h2>
       </div>
-    </section>
-
-    <section id="services">
-      <div class="container">
-        <div class="section-title">
-          <h2>Services</h2>
-          <p>Flexible support for businesses, vendors, and organizations pursuing or performing contract work.</p>
-        </div>
-        <div class="cards">
-          <div class="card">
-            <div class="card-number">01</div>
-            <h3>Opportunity Review</h3>
-            <p>Review of solicitations, scopes of work, deadlines, qualifications, and major performance requirements.</p>
-          </div>
-          <div class="card">
-            <div class="card-number">02</div>
-            <h3>Vendor Sourcing</h3>
-            <p>Identification and coordination of qualified suppliers, service providers, and subcontractors.</p>
-          </div>
-          <div class="card">
-            <div class="card-number">03</div>
-            <h3>Proposal Support</h3>
-            <p>Assistance organizing pricing, vendor quotes, required documents, and submission materials.</p>
-          </div>
-          <div class="card">
-            <div class="card-number">04</div>
-            <h3>Project Coordination</h3>
-            <p>Scheduling, communication, milestone tracking, and issue coordination during performance.</p>
-          </div>
-          <div class="card">
-            <div class="card-number">05</div>
-            <h3>Contract Administration</h3>
-            <p>Support with records, deliverables, invoices, vendor follow-up, and contract documentation.</p>
-          </div>
-          <div class="card">
-            <div class="card-number">06</div>
-            <h3>Custom Procurement Support</h3>
-            <p>Project-specific sourcing and management services based on the size and complexity of the requirement.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="capabilities" class="alt">
-      <div class="container">
-        <div class="section-title">
-          <h2>Capabilities</h2>
-          <p>Structured support for sourcing, coordination, documentation, and contract performance.</p>
-        </div>
-        <div class="cap-grid">
-          <div class="card">
-            <h3>Core Competencies</h3>
-            <ul class="cap-list">
-              <li>Government and commercial opportunity review</li>
-              <li>Supplier and subcontractor identification</li>
-              <li>Quote collection and pricing coordination</li>
-              <li>Proposal and documentation organization</li>
-              <li>Schedule and milestone management</li>
-              <li>Vendor communication and performance follow-up</li>
-              <li>Invoice, delivery, and record support</li>
-              <li>Project-specific procurement coordination</li>
-            </ul>
-          </div>
-          <div class="info-box">
-            <h3>Business Information</h3>
-            <p><strong>Business Name:</strong><br>Vorter Contract Group</p>
-            <p><strong>Service Area:</strong><br>United States</p>
-            <p><strong></strong><br></p>
-            <p><strong>Website:</strong><br>vortercontractgroup.com</p>
-            <p><strong>UEI:</strong><br>XK8KT7LJ8DA6</p>
-            <p><strong>CAGE:</strong><br>Pending</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="experience">
-      <div class="container">
-        <div class="section-title">
-          <h2>Relevant Experience</h2>
-          <p>Vorter Contract Group draws on project-management and government-contract experience involving coordination, sourcing, and customer support.</p>
-        </div>
-        <div class="experience-grid">
-          <div class="experience-card">
-            <h3>Government Contract Support</h3>
-            <p>Experience supporting government-related projects involving equipment, trailers, materials, logistics, and customer requirements.</p>
-          </div>
-          <div class="experience-card">
-            <h3>Vendor & Material Coordination</h3>
-            <p>Experience obtaining quotes, coordinating deliveries, sourcing materials, and working with outside vendors to meet project needs.</p>
-          </div>
-          <div class="experience-card">
-            <h3>Project Management</h3>
-            <p>Experience managing schedules, customer communication, documentation, issue resolution, and project follow-through.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="pricing" class="alt">
-      <div class="container">
-        <div class="section-title">
-          <h2>Typical Pricing</h2>
-          <p>Pricing varies by scope, urgency, complexity, travel, and the number of vendors or deliverables involved.</p>
-        </div>
-        <div class="pricing">
-          <div class="price-card">
-            <h3>Initial Consultation</h3>
-            <div class="price">$150 per hour</div>
-            <p>Business needs review, solicitation discussion, and recommended next steps.</p>
-          </div>
-          <div class="price-card">
-            <h3>Solicitation Review</h3>
-            <div class="price">Starting at $350</div>
-            <p>Review of requirements, deadlines, compliance items, and major cost considerations.</p>
-          </div>
-          <div class="price-card">
-            <h3>Vendor Sourcing Package</h3>
-            <div class="price">Starting at $750</div>
-            <p>Vendor research, outreach, quote collection, and comparison for a defined requirement.</p>
-          </div>
-          <div class="price-card">
-            <h3>Proposal Coordination</h3>
-            <div class="price">Starting at $1,000</div>
-            <p>Organization of pricing, supporting documents, vendor information, and submission materials.</p>
-          </div>
-          <div class="price-card">
-            <h3>Project Management</h3>
-            <div class="price">Starting at $2,500 per project</div>
-            <p>Coordination of vendors, schedules, deliverables, communication, and performance tracking.</p>
-          </div>
-          <div class="price-card">
-            <h3>Ongoing Contract Support</h3>
-            <div class="price">Starting at $1,500 per month</div>
-            <p>Recurring administrative, vendor, documentation, and project coordination support.</p>
-          </div>
-        </div>
-
-        <div class="notice">
-          <strong>Payment information:</strong> Credit card payments may be accepted for approved invoices up to
-          $20,000. Larger payments are generally completed by ACH, wire transfer, or business check.
-          Final pricing is provided in a written quote or service agreement before work begins.
-        </div>
-      </div>
-    </section>
-
-    <section id="about">
-      <div class="container about">
-        <div>
-          <h2>About Vorter Contract Group</h2>
-          <p>
-            Vorter Contract Group is a contract support and coordination business serving government,
-            commercial, and vendor-related projects. We focus on clear communication, organized documentation,
-            dependable vendor coordination, and practical project oversight.
-          </p>
-          <p>
-            Each engagement is evaluated individually so the services and pricing match the actual requirement.
-          </p>
-        </div>
-        <div>
-          <h2>How Engagements Work</h2>
-          <ol class="checklist">
-            <li>Client submits a request, scope, or solicitation.</li>
-            <li>We review the requirements and discuss the needed support.</li>
-            <li>A written quote or service agreement is provided.</li>
-            <li>Work begins after a signature approval by authorized personnel and any required initial payment.</li>
-            <li>Progress and deliverables are documented through completion.</li>
-          </ol>
-        </div>
-      </div>
-    </section>
-
-    <section id="legal" class="alt">
-      <div class="container">
-        <div class="section-title">
-          <h2>Business Policies</h2>
-          <p>Clear terms help clients understand how inquiries, pricing, and payments are handled.</p>
-        </div>
-        <div class="legal-grid">
-          <div class="legal-card">
-            <h3>Privacy Policy</h3>
-            <p>This website does not store payment-card information or require account registration. Information voluntarily provided by phone or email is used to respond to inquiries, prepare quotes, and administer services. Information is not sold.</p>
-          </div>
-          <div class="legal-card">
-            <h3>Terms of Service</h3>
-            <p>Website information is general and does not guarantee a contract award or create a client relationship. Services begin only after approval of a written quote, purchase order, scope, or service agreement.</p>
-          </div>
-          <div class="legal-card">
-            <h3>Payments</h3>
-            <p>Payment methods and schedules are stated in the applicable agreement or invoice. Credit-card payments may be limited, and larger transactions may require ACH, wire transfer, or business check.</p>
-          </div>
-          <div class="legal-card">
-            <h3>Cancellations & Refunds</h3>
-            <p>Cancellation and refund terms depend on the written agreement, work already completed, nonrefundable vendor commitments, and costs already incurred.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact">
-      <div class="container contact-grid">
-        <div class="contact-box">
-          <h2>Request a Quote</h2>
-          <p>Contact Vorter Contract Group to discuss your project, service requirement, or contracting opportunity.</p>
-          <div class="contact-row"><strong></strong> <a href="tel:+16613644950"></a></div>
-          <div class="contact-row"><strong>Email:</strong> info@vortercontractgroup.com</div>
-          <div class="contact-row"><strong>Service Area:</strong> United States</div>
-          <p class="small" style="color:#d9e2ea">
-          </p>
-        </div>
-        <div class="card">
-          <h3>Tell Us About the Requirement</h3>
-          <form id="contactForm">
-            <input id="name" type="text" placeholder="Your name" required>
-            <input id="company" type="text" placeholder="Company or organization">
-            <input id="email" type="email" placeholder="Your email" required>
-            <textarea id="message" placeholder="Describe the project, solicitation, or service needed" required></textarea>
-            <button type="submit">Prepare Email</button>
-          </form>
-          <p class="small">This form opens the visitor's email program. The website does not store submitted information.</p>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container">
-      © 2026 Vorter Contract Group. All rights reserved.
+      <p>We align each requirement with qualified partners, resources, and solutions appropriate to the scope, location, and performance needs of the project.</p>
     </div>
-  </footer>
 
-  <script>
-    document.getElementById("contactForm").addEventListener("submit", function(event){
-      event.preventDefault();
-      const businessEmail = "info@vortercontractgroup.com";
-      const subject = encodeURIComponent("Website inquiry — Vorter Contract Group");
-      const body = encodeURIComponent(
-        "Name: " + document.getElementById("name").value + "\n" +
-        "Company: " + document.getElementById("company").value + "\n" +
-        "Email: " + document.getElementById("email").value + "\n\n" +
-        "Message:\n" + document.getElementById("message").value
-      );
-      window.location.href = "mailto:" + businessEmail + "?subject=" + subject + "&body=" + body;
-    });
-  </script>
-</body>
-</html>
+    <div class="slider" aria-label="Industries we support">
+      <button class="slider-btn prev" aria-label="Previous industry">←</button>
+      <div class="slides">
+        <article class="slide active" data-theme="government">
+          <div class="slide-index">01 / 05</div><div class="slide-icon">◎</div>
+          <h3>Government</h3>
+          <p>Federal, state, and local procurement and contract support across the United States.</p><span>PUBLIC SECTOR</span>
+        </article>
+        <article class="slide" data-theme="defense">
+          <div class="slide-index">02 / 05</div><div class="slide-icon">◇</div>
+          <h3>Defense & Military</h3>
+          <p>Procurement, logistics, facilities, equipment, training, and operational support requirements.</p><span>MISSION SUPPORT</span>
+        </article>
+        <article class="slide" data-theme="construction">
+          <div class="slide-index">03 / 05</div><div class="slide-icon">△</div>
+          <h3>Construction & Infrastructure</h3>
+          <p>Qualified partners for construction support, site services, maintenance, materials, and infrastructure needs.</p><span>BUILT ENVIRONMENT</span>
+        </article>
+        <article class="slide" data-theme="space">
+          <div class="slide-index">04 / 05</div><div class="slide-icon">✦</div>
+          <h3>Space & Aerospace</h3>
+          <p>Vendor coordination and procurement support for aerospace, research, technology, and specialized operations.</p><span>ADVANCED MISSIONS</span>
+        </article>
+        <article class="slide" data-theme="logistics">
+          <div class="slide-index">05 / 05</div><div class="slide-icon">→</div>
+          <h3>Logistics & Transportation</h3>
+          <p>Freight, material delivery, equipment transportation, fleet support, and logistics coordination nationwide.</p><span>MOVING MISSIONS FORWARD</span>
+        </article>
+      </div>
+      <button class="slider-btn next" aria-label="Next industry">→</button>
+    </div>
+    <div class="dots" aria-hidden="true"></div>
+  </section>
+
+  <section id="services" class="services">
+    <div class="section-head compact"><div><div class="section-label">CORE CAPABILITIES</div><h2>Built to manage the requirement, not just the transaction.</h2></div></div>
+    <div class="service-grid">
+      <article><div class="num">01</div><h3>Government Procurement</h3><p>We source products, services, and suppliers aligned with solicitation requirements, schedule, and performance expectations.</p></article>
+      <article><div class="num">02</div><h3>Vendor Sourcing</h3><p>We identify and coordinate qualified subcontractors and vendors based on scope, geography, capability, and availability.</p></article>
+      <article><div class="num">03</div><h3>Contract Management</h3><p>From award through completion, we coordinate documentation, communication, deliverables, and performance obligations.</p></article>
+      <article><div class="num">04</div><h3>Project Coordination</h3><p>We bring together people, resources, schedules, and vendors to keep contract execution organized and responsive.</p></article>
+    </div>
+  </section>
+
+  <section id="about" class="about">
+    <div class="about-quote"><div class="section-label">WHY VORTER</div><h2>Serious about the details that determine whether a contract succeeds.</h2></div>
+    <div class="about-copy">
+      <p>VORTER Contract Group was built around a straightforward principle: government requirements deserve dependable execution. We pursue opportunities where qualified partners, responsible pricing, clear communication, and organized contract management can produce a strong solution.</p>
+      <ul>
+        <li>10+ years of founder government contracting experience</li>
+        <li>Nationwide vendor and subcontractor sourcing</li>
+        <li>Federal, state, and local contracting focus</li>
+        <li>Responsive, compliance-minded project coordination</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="leadership" class="leadership">
+    <div class="portrait-wrap"><img src="assets/steven-armas.png" alt="Steven Armas, Founder of VORTER Contract Group"/></div>
+    <div class="leadership-copy">
+      <div class="section-label">OUR TEAM</div>
+      <h2>Steven Armas</h2>
+      <div class="role">Founder | Government Contract Manager</div>
+      <p>Steven leads VORTER Contract Group with more than a decade of experience supporting government contracts, procurement, vendor coordination, equipment sourcing, logistics, and project execution.</p>
+      <p>His background includes working with federal, state, and local government customers and managing the details required to move projects from initial requirement through successful delivery.</p>
+      <p>Today, Steven applies that experience to building VORTER's nationwide network of qualified vendors and subcontractors, with a focus on responsive communication, accountability, and dependable contract performance.</p>
+      <div class="metrics">
+        <div><strong>10+</strong><span>Years experience</span></div>
+        <div><strong>50</strong><span>States supported</span></div>
+        <div><strong>3</strong><span>Government levels</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="partners">
+    <div><div class="section-label">BUILDING TRUSTED PARTNERSHIPS</div><h2>Government agencies. Prime contractors. Qualified vendors.</h2></div>
+    <p>Whether you're seeking dependable contract support, exploring a teaming opportunity, or interested in joining our vendor network, VORTER Contract Group is ready to discuss the requirement.</p>
+  </section>
+
+  <section id="contact" class="contact">
+    <div><div class="section-label">CONTACT</div><h2>Let's discuss the next requirement.</h2></div>
+    <div class="contact-grid">
+      <a href="mailto:info@vortercontractgroup.com"><span>GENERAL INQUIRIES</span>info@vortercontractgroup.com</a>
+      <a href="mailto:vendors@vortercontractgroup.com"><span>VENDOR RELATIONS</span>vendors@vortercontractgroup.com</a>
+      <a href="tel:+16613790006"><span>PHONE</span>661-379-0006</a>
+      <a href="https://vortercontractgroup.com"><span>WEB</span>vortercontractgroup.com</a>
+    </div>
+  </section>
+</main>
+<footer><div>VORTER CONTRACT GROUP</div><div>UEI XK8KT7LJ8DA6 · CAGE PENDING · BAKERSFIELD, CA</div><div>© <span id="year"></span> VORTER Contract Group</div></footer>
+<script src="script.js"></script>
+</body></html>
